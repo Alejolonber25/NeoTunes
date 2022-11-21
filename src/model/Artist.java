@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Artist extends ProducerUser {
-    private ArrayList<Song> songs;
+    private ArrayList<Audio> songs;
 
     /**
      * Artist()
@@ -20,16 +20,17 @@ public class Artist extends ProducerUser {
     }
     /**
      * getSongs()
+     *
      * @return songs ArrayList<Song>
      */
-    public ArrayList<Song> getSongs() {
+    public ArrayList<Audio> getSongs() {
         return songs;
     }
     /**
      * setSongs() void
      * @param songs ArrayList<Song>
      */
-    public void setSongs(ArrayList<Song> songs) {
+    public void setSongs(ArrayList<Audio> songs) {
         this.songs = songs;
     }
 }

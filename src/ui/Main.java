@@ -20,6 +20,21 @@ public class Main {
      */
     public static void main(String[] args) {
         Main main = new Main();
+        main.controller.addProducerUser(1,"Alejo","1","Alejo","www.alejo");
+        main.controller.addProducerUser(2,"Victor","2","Victor","www.victor");
+        main.controller.addConsumerUser(1,"Miguel","3");
+        main.controller.addConsumerUser(1,"Espe","4");
+
+        main.controller.registerSong("Lloraras", 23, "www.lloraras","Los7Destinos",SongGender.HOUSE,34, "1");
+        main.controller.registerPodcast("Historias",23,"www.historias","En las historias", PodcastCategory.ENTERTAINMENT, "2");
+        main.controller.createPlaylist("3","LaLuna");
+        main.controller.createPlaylist("3","QueVivaLaVidaHp");
+        main.controller.createPlaylist("4","LaLuna");
+        main.controller.editPlaylist("4","LaLuna","Lloraras");
+
+        main.controller.editPlaylist("3","LaLuna","Lloraras");
+        main.controller.editPlaylist("3","LaLuna","Historias");
+        main.controller.editPlaylist("3","QueVivaLaVidaHp","Lloraras");
         main.cleanConsole();
         int option = 0;
         do{
@@ -47,6 +62,10 @@ public class Main {
                         3. Register audio.
                         4. Create playlist.
                         5. Edit playlist.
+                        6. Share playlist.
+                        7. Play audio.
+                        8. Buy song.
+                        9. Generate reports.
                         0. Exit.""");
         option = reader.nextInt();
         return option;
@@ -63,6 +82,10 @@ public class Main {
             case 3 -> uiRegisterSongOrPodcast();
             case 4 -> uiCreatePlaylist();
             case 5 -> uiEditPlaylist();
+            case 6 -> uiSharePlaylist();
+            case 7 -> uiPlayAudio();
+            case 8 -> uiBuySong();
+            case 9 -> uiGenerateReports();
             default -> {
             }
         }
@@ -157,5 +180,35 @@ public class Main {
         System.out.print("Name audio: ");
         String nameAudio = reader.next();
         System.out.println(controller.editPlaylist(id, namePlaylist, nameAudio));
+    }
+    public void uiSharePlaylist(){
+        System.out.print("Id consumer user: ");
+        String id = reader.next();
+        System.out.print("Name playlist: ");
+        String namePlaylist = reader.next();
+        System.out.println(controller.sharePlaylist(id, namePlaylist));
+    }
+
+    public void uiPlayAudio(){
+        System.out.print("Id consumer user: ");
+        String id = reader.next();
+        System.out.print("Name playlist: ");
+        String namePlaylist = reader.next();
+        System.out.print("Name audio: ");
+        String nameAudio = reader.next();
+        System.out.println(controller.playAudio(id, namePlaylist, nameAudio));
+    }
+
+    public void uiBuySong(){
+        System.out.print("Id consumer user: ");
+        String id = reader.next();
+        System.out.print("Name playlist: ");
+        String namePlaylist = reader.next();
+        System.out.print("Name audio: ");
+        String nameAudio = reader.next();
+        System.out.println(controller.buyAudio(id, namePlaylist, nameAudio));
+    }
+    public void uiGenerateReports(){
+        System.out.println(controller.generateReports());
     }
 }

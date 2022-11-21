@@ -1,10 +1,15 @@
 package model;
 
-public class Song extends Audio {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Song extends Audio implements Reproducible, Comparable<Song>{
     private String album;
     private SongGender gender;
     private double price;
     private int numberSales;
+
+    private boolean bought;
     /**
      * Song()
      * @param name String
@@ -38,8 +43,8 @@ public class Song extends Audio {
      * SongGender() SongGender
      * @return gender SongGender
      */
-    public SongGender getGender() {
-        return gender;
+    public String getGender() {
+        return gender.toString();
     }
     /**
      * setGender() void
@@ -75,5 +80,65 @@ public class Song extends Audio {
      */
     public void setNumberSales(int numberSales) {
         this.numberSales = numberSales;
+    }
+    public void addSale() {
+        this.numberSales++;
+    }
+
+    @Override
+    public void reproduction(int typeUser, String ad, int reproductions) {
+        Reproducible.super.reproduction(typeUser, ad);
+
+        Timer t = new Timer();
+        if (typeUser == 0 && reproductions%2==0 && reproductions >0){
+
+            System.out.println(ad);
+
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("Audio is playing...");
+
+                }
+            }, 5000);
+
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("\nAudio played");
+                    t.cancel();
+                }
+            }, 15000);
+        }else{
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("\nAudio played");
+                    t.cancel();
+                }
+            }, 10000);
+        }
+
+
+
+    }
+
+    public boolean isBought() {
+        return bought;
+    }
+
+    public void setBought(boolean bought) {
+        this.bought = bought;
+    }
+
+    @Override
+    public int compareTo(Song o) {
+        if(o.getNumberReproductions()<getNumberReproductions()){
+            return -1;
+        }else if (o.getNumberReproductions()<getNumberReproductions()){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 }

@@ -1,6 +1,9 @@
 package model;
 
-public class Podcast extends Audio {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Podcast extends Audio implements Reproducible, Comparable<Podcast>{
 
     private String description;
     private PodcastCategory category;
@@ -36,8 +39,8 @@ public class Podcast extends Audio {
      * getCategory() PodcastCategory
      * @return category PodcastCategory
      */
-    public PodcastCategory getCategory() {
-        return category;
+    public String getCategory() {
+        return category.toString();
     }
     /**
      * setCategory() void
@@ -45,5 +48,50 @@ public class Podcast extends Audio {
      */
     public void setCategory(PodcastCategory category) {
         this.category = category;
+    }
+
+
+    @Override
+    public void reproduction(int typeUser, String ad, int reproductions) {
+        Reproducible.super.reproduction(typeUser, ad);
+
+        Timer t = new Timer();
+        if (typeUser == 0){
+            System.out.println(ad);
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("Audio is playing...");
+
+                }
+            }, 5000);
+
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("\nAudio played");
+                    t.cancel();
+                }
+            }, 15000);
+        }else{
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.print("\nAudio played");
+                    t.cancel();
+                }
+            }, 10000);
+        }
+    }
+
+    @Override
+    public int compareTo(Podcast o) {
+        if(o.getNumberReproductions()<getNumberReproductions()){
+            return -1;
+        }else if (o.getNumberReproductions()<getNumberReproductions()){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 }

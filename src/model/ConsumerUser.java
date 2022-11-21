@@ -5,8 +5,8 @@ import java.util.Date;
 
 public abstract class ConsumerUser extends User {
     private ArrayList<PlayList> playlists;
-    private double totalSongPlayingTime;
-    private double totalPodcastPlayingTime;
+    private int totalSongPlaying;
+    private int totalPodcastPlaying;
     private String favouritePodcastCategory;
     private String favouriteSongGender;
     private String favouriteArtist;
@@ -40,30 +40,6 @@ public abstract class ConsumerUser extends User {
      * getTotalSongPlayingTime() double
      * @return totalSongPlayingTime double
      */
-    public double getTotalSongPlayingTime() {
-        return totalSongPlayingTime;
-    }
-    /**
-     * setTotalSongPlayingTime() void
-     * @param totalSongPlayingTime double
-     */
-    public void setTotalSongPlayingTime(double totalSongPlayingTime) {
-        this.totalSongPlayingTime = totalSongPlayingTime;
-    }
-    /**
-     * getTotalPodcastPlayingTime() double
-     * @return totalPodcastPlayingTime double
-     */
-    public double getTotalPodcastPlayingTime() {
-        return totalPodcastPlayingTime;
-    }
-    /**
-     * setTotalPodcastPlayingTime() void
-     * @param totalPodcastPlayingTime double
-     */
-    public void setTotalPodcastPlayingTime(double totalPodcastPlayingTime) {
-        this.totalPodcastPlayingTime = totalPodcastPlayingTime;
-    }
 
     /**
      * getFavouritePodcastCategory() String
@@ -120,5 +96,29 @@ public abstract class ConsumerUser extends User {
      */
     public void setFavouriteContentCreator(String favouriteContentCreator) {
         this.favouriteContentCreator = favouriteContentCreator;
+    }
+
+    public int getTotalSongPlaying() {
+        return totalSongPlaying;
+    }
+
+    public void setTotalSongPlaying(int totalSongPlaying) {
+        this.totalSongPlaying = totalSongPlaying;
+    }
+
+    public int getTotalPodcastPlaying() {
+        return totalPodcastPlaying;
+    }
+
+    public void setTotalPodcastPlaying(int totalPodcastPlaying) {
+        this.totalPodcastPlaying = totalPodcastPlaying;
+    }
+
+    public void addTotalPodcastPlaying() {
+        this.totalPodcastPlaying++;
+    }
+
+    public void addTotalSongPlaying() {
+        this.totalSongPlaying++;
     }
 }

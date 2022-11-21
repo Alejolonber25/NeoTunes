@@ -1,6 +1,9 @@
 package model;
 
-public abstract class Audio {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public abstract class Audio{
     private String name;
     private int numberReproductions;
     private double duration;
@@ -16,6 +19,7 @@ public abstract class Audio {
         this.name = name;
         this.duration = duration;
         this.url = url;
+        numberReproductions = 0;
     }
     /**
      * getName() String
@@ -72,5 +76,9 @@ public abstract class Audio {
      */
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public void addReproduction(){
+        this.numberReproductions++;
     }
 }

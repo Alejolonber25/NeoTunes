@@ -77,4 +77,8 @@ public abstract class ProducerUser extends User {
     public void setTotalTimePlayed(double totalTimePlayed) {
         this.totalTimePlayed = totalTimePlayed;
     }
+
+    public void addReproduction(){
+        this.totalReproductions++;
+    }
 }

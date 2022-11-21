@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ContentCreator extends ProducerUser {
-    private ArrayList<Podcast> podcasts;
+    private ArrayList<Audio> podcasts;
 
     /**
      * ContentCreator()
@@ -20,16 +20,17 @@ public class ContentCreator extends ProducerUser {
     }
     /**
      * getPodcasts() ArrayList<Podcast>
+     *
      * @return podcasts ArrayList<Podcast>
      */
-    public ArrayList<Podcast> getPodcasts() {
+    public ArrayList<Audio> getPodcasts() {
         return podcasts;
     }
     /**
      * setPodcasts() void
      * @param podcasts ArrayList<Podcast>
      */
-    public void setPodcasts(ArrayList<Podcast> podcasts) {
+    public void setPodcasts(ArrayList<Audio> podcasts) {
         this.podcasts = podcasts;
     }
 }
