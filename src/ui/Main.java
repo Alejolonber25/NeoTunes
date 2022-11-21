@@ -20,21 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Main main = new Main();
-        main.controller.addProducerUser(1,"Alejo","1","Alejo","www.alejo");
-        main.controller.addProducerUser(2,"Victor","2","Victor","www.victor");
-        main.controller.addConsumerUser(1,"Miguel","3");
-        main.controller.addConsumerUser(1,"Espe","4");
 
-        main.controller.registerSong("Lloraras", 23, "www.lloraras","Los7Destinos",SongGender.HOUSE,34, "1");
-        main.controller.registerPodcast("Historias",23,"www.historias","En las historias", PodcastCategory.ENTERTAINMENT, "2");
-        main.controller.createPlaylist("3","LaLuna");
-        main.controller.createPlaylist("3","QueVivaLaVidaHp");
-        main.controller.createPlaylist("4","LaLuna");
-        main.controller.editPlaylist("4","LaLuna","Lloraras");
-
-        main.controller.editPlaylist("3","LaLuna","Lloraras");
-        main.controller.editPlaylist("3","LaLuna","Historias");
-        main.controller.editPlaylist("3","QueVivaLaVidaHp","Lloraras");
         main.cleanConsole();
         int option = 0;
         do{
